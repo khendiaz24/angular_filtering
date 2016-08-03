@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html class="no-js" lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>ProjectName | PageName</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- <link rel="stylesheet" href="css/normalize.css" media="all"/>
+<link rel="stylesheet" href="css/pace.css" media="all"/>
+<link rel="stylesheet" href="css/style.css" media="all"/> -->
+
+<!--[if lt IE 9]> <script src="js/css3-mediaqueries.js"></script> <![endif]-->
+<!-- <script src="js/html5.js"></script>
+<script src="js/lib/modernizr-2.8.3.min.js"></script>
+<script src="js/pace.min.js"></script> -->
+
+<script type="text/javascript">
+	// dynamically add base tag as well as css and javascript files.
+	// we can't add css/js the usual way, because some browsers (FF) eagerly prefetch resources
+	// before the base attribute is added, causing 404 and terribly slow loading of the docs app.
+	(function() {
+		var indexFile = (location.pathname.match(/\/(index[^\.]*\.html)/) || ['', ''])[1],
+				rUrl = /(#!\/|api|guide|misc|tutorial|error|index[^\.]*\.html).*$/,
+				baseUrl = location.href.replace(rUrl, indexFile),
+				production = location.hostname === 'docs.angularjs.org',
+				headEl = document.getElementsByTagName('head')[0],
+				sync = true;
+		addTag('base', {href: baseUrl});
+
+		addTag('link', {rel: 'stylesheet', href: 'css/normalize.css', type: 'text/css'});
+		addTag('link', {rel: 'stylesheet', href: 'css/pace.css', type: 'text/css'});
+		addTag('link', {rel: 'stylesheet', href: 'css/style.css', type: 'text/css'});
+
+		addTag('script', {src: 'js/html5.js' }, sync);
+		addTag('script', {src: 'js/lib/modernizr-2.8.3.min.js' }, sync);
+		addTag('script', {src: 'js/pace.min.js' }, sync);
+
+		addTag('script', {src: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' }, sync);
+		addTag('script', {src: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js' }, sync);
+		addTag('script', {src: 'js/angular.min.js' }, sync);
+		addTag('script', {src: 'js/angular-resource.min.js' }, sync);
+		addTag('script', {src: 'js/angular-route.min.js' }, sync);
+		addTag('script', {src: 'js/app.js' }, sync);
+		addTag('script', {src: 'js/controller.js' }, sync);
+		addTag('script', {src: 'js/plugins.js' }, sync);
+		addTag('script', {src: 'js/custom.js' }, sync);
+
+
+		function addTag(name, attributes, sync) {
+			var el = document.createElement(name),
+					attrName;
+			for (attrName in attributes) {
+				el.setAttribute(attrName, attributes[attrName]);
+			}
+			sync ? document.write(outerHTML(el)) : headEl.appendChild(el);
+		}
+
+		function outerHTML(node){
+			// if IE, Chrome take the internal method otherwise build one
+			return node.outerHTML || (
+					function(n){
+							var div = document.createElement('div'), h;
+							div.appendChild(n);
+							h = div.innerHTML;
+							div = null;
+							return h;
+					})(node);
+		}
+	})();
+</script>
+</head>
+<body ng-app="myApps">
+<section id="main-container">
+	<header></header>
+	<section id="main-wrapper" ng-controller="listData">
+		<input type="text" name="name" value="" ng-model="search" placeholder="search here">
+		<ul>
+			<li ng-repeat="lists in testList | limitTo: quantity | orderBy:orderProp | filter:search as result">
+				<span>{{ $index + 1 }}</span>
+				<span>{{ lists.name }}</span>
+				<span>{{ lists.age }}</span>
+			</li>
+		</ul>
+	</section>
+	<div ng-controller="partitialData">
+		{{ content }}
+	</div>
+</section>
+<footer>
+	<div class="bp-center"><hello-world></hello-world></div>
+</footer>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/lib/jquery-ui.min.js"><\/script>')</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/custom.js"></script> -->
+</body>
+</html>

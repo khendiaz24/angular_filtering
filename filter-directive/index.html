@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html class="no-js" lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>ProjectName | PageName</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="css/normalize.css" media="all"/>
+<link rel="stylesheet" href="css/pace.css" media="all"/>
+<link rel="stylesheet" href="css/style.css" media="all"/>
+
+<!--[if lt IE 9]> <script src="js/css3-mediaqueries.js"></script> <![endif]-->
+<script src="js/html5.js"></script>
+<script src="js/lib/modernizr-2.8.3.min.js"></script>
+<script src="js/pace.min.js"></script>
+</head>
+<body>
+<section id="main-container" ng-app="myApps">
+	<header></header>
+	<section id="main-wrapper" ng-controller="dataListing">
+		<!-- <div class="top" ng-controller="displayController as filters">
+			<div class="bp-set">
+				<select ng-model="catFilter">
+					<option ng-repeat="fltName in filters.dataValues" value="">{{fltName}}</option>
+				</select>
+			</div>
+		</div> -->
+		<div class="top">
+			<div class="bp-set">
+				<input type="text" ng-model="search.name" placeholder="Search">
+			</div>
+			<div class="bp-set">
+				<select ng-model="catFilter.id"
+					ng-options="category.id as category.fName for category in myfiltersData.filterList">
+					<option value="">All</option>
+				</select>
+			</div>
+		</div>
+		<div class="data-show">
+			<table>
+				<tr>
+					<th ng-click="orderByMe('name')" style="cursor:pointer">Filename</th>
+					<th ng-click="orderByMe('created')" style="cursor:pointer">Created</th>
+					<th>Updated</th>
+					<th>Author</th>
+					<th>Site(s)</th>
+					<th>Langauge(s)</th>
+					<th>Region(s)</th>
+					<th>Page(s)</th>
+					<th>Actions</th>
+				</tr>
+				<tr ng-repeat="es in dataName.dataList | filter:{itemid:catFilter.id||undefined} | filter:search.name | orderBy:myOrderBy">
+					<td>{{es.name}}</td>
+					<td>{{es.created}}</td>
+					<td>{{es.updated}}</td>
+					<td>{{es.author}}</td>
+					<td>{{es.site}}</td>
+					<td>{{es.language}}</td>
+					<td>{{es.region}}</td>
+					<td>{{es.page}}</td>
+					<td>{{es.actions}}</td>
+				</tr>
+			</table>
+		</div>
+		<hello-world></hello-world>
+	</section>
+	<div class="" ng-controller="partitialData">
+		<h1>{{partialMade}}</h1>
+	</div>
+
+</section>
+<div class="" ng-include="'partialContent.html'"></div>
+<footer></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/lib/jquery-ui.min.js"><\/script>')</script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<!-- <script src="js/angular.min.js"></script> -->
+<script src="js/app.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
